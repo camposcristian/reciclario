@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <title>Reciclario App</title>
-    
+
     <!-- STYLES -->
     <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
@@ -16,8 +16,12 @@
         <img id="logo" src="images/logo.png" alt="logo reciclario" />
     </div>
     <div id="wrapper">
-        <p>¿Es <span id="green">reciclable</span> o no?</p>
-        <div id="resp-si">SI</div><div id="resp-no">NO</div>
+        <form action="/" method="post">
+            <label for="residuo">Es Reciclable?</label>
+            <input type="search" name="residuo" placeholder="Nombre del Residuo" />
+            <!--<p>¿Es <span id="green">reciclable</span> o no?</p>
+            <div id="resp-si">SI</div><div id="resp-no">NO</div>-->
+        </form>
     </div>
     <div id="footer">
 
