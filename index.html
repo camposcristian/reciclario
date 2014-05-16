@@ -16,12 +16,10 @@
         <img id="logo" src="images/logo.png" alt="logo reciclario" />
     </div>
     <div id="wrapper">
-        <form action="/" method="post">
-            <label for="residuo">Es Reciclable?</label>
-            <input type="search" name="residuo" placeholder="Nombre del Residuo" />
-            <!--<p>¿Es <span id="green">reciclable</span> o no?</p>
-            <div id="resp-si">SI</div><div id="resp-no">NO</div>-->
-        </form>
+        <label for="residuo">Es Reciclable?</label>
+        <input type="search" id="residuo" placeholder="Nombre del Residuo" />
+        <input type="hidden" id="residuo-id" placeholder="Nombre del Residuo" />
+        <p id="residuos-description"></p>
     </div>
     <div id="footer">
 
@@ -29,6 +27,7 @@
     <!-- SCRIPTS -->
     <script src="lib/bootstrap/js/jquery-1.10.2.js"></script>
     <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script src="lib/jquery.ui/jquery.ui.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

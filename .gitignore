@@ -156,3 +156,5 @@ $RECYCLE.BIN/
 .DS_Store
 reciclario.sublime-project
 reciclario.sublime-workspace
+*.config
+vwd.webinfo
