@@ -4,19 +4,19 @@ $(document).on("ready", function () {
             minLength: 2,
             source: residuos,
             focus: function( event, ui ) {
-                $("#residuo").val(ui.item.post_title);
+                $("#residuo").val(ui.item.label);
                 return false;
             },
             select: function( event, ui ) {
-                $( "#residuo" ).val( ui.item.post_title );
-                $( "#residuo-id" ).val( ui.item.value );
+                $( "#residuo" ).val( ui.item.label );
+                $("#residuo-id").val(ui.item.post_type);
                 $( "#residuos-description" ).html( ui.item.post_type );
                 return false;
             }
         })
         .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
             return $( "<li>" )
-              .append("<a>" + item.post_title + "<br>" + item.post_type + "</a>")
+              .append("<a>" + item.label + "<br>" + item.post_type + "</a>")
               .appendTo( ul );
         };
     });
