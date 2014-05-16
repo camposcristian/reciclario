@@ -1,1 +1,9 @@
-﻿#logo { background: url(../images/logo.png) 0 0 no-repeat; width: 405px; height: 124px; display: block; margin: 10px auto; text-indent: -9999px; background-size: cover; }
+﻿#logo { background: url(../images/logo.png) 0 0 no-repeat; width: 292px; height: 124px; display: block; margin: 10px auto; text-indent: -9999px; background-size: cover; }
+#logo-hombre { background: url(../images/tipito.png) 0 0 no-repeat; width: 292px; height: 124px; display: block; margin: 10px auto; text-indent: -9999px; background-size: cover; }
+/* autocomplete styles */
+.ui-helper-hidden-accessible { display: none !important; visibility: hidden; }
+.ui-autocomplete { list-style: none; padding: 10px 0; background: #FFF; width: 90% !important; }
+.ui-autocomplete li { display: block; padding: 5px 0; }
+.ui-autocomplete li a { color: #333; }
+.ui-autocomplete li a:hover { text-decoration: none; }
+.ui-autocomplete li a span { font-weight: bold; }

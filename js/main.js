@@ -1,4 +1,5 @@
 $(document).on("ready", function () {
+    
     $.get("/fakes/residuos.json").success(function (residuos) {
         $( "#residuo" ).autocomplete({
             minLength: 2,
@@ -16,7 +17,7 @@ $(document).on("ready", function () {
         })
         .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
             return $( "<li>" )
-              .append("<a>" + item.label + "<br>" + item.post_type + "</a>")
+              .append("<a>" + item.label + " <span>" + item.post_type + "</span></a>")
               .appendTo( ul );
         };
     });
