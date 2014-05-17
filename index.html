@@ -10,13 +10,11 @@
     <link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
-	
+	<header class="container">
+	    <a href="http://reciclario.com.ar/" id="logo" title="Reciclario">Reciclario</a>
+	</header>
+
 	<div id="main">
-
-	    <header class="container">
-	        <a href="http://reciclario.com.ar/" id="logo" title="Reciclario">Reciclario</a>
-	    </header>
-
 	    <div class="container">
 	        <div class="row">
 	            <form role="form" class="col-md-8" id="form_residuos">
@@ -34,46 +32,26 @@
 	            </form>
 	        </div>
 	    </div><!-- container -->
-
-		<footer class="container">
-	        <a href="http://reciclario.com.ar/" id="logo-hombre" title="Reciclario">Reciclario</a>
-	    </footer>
-
-    </div>
-
+    </div><!-- main -->
+	
     <div id="residuo_description" style="display:none">
-
-	    <header class="container">
-	        <a href="http://reciclario.com.ar/" id="logo" title="Reciclario">Reciclario</a>
-	    </header>
-
 	    <div class="container">
 	        <div class="row">
 	            <div class="col-md-8">
 
-	            	<h2>Nombre</h2>
+	            	<h2 id="nombre_prod">Nombre</h2>
 
-	            	<img src="images/rec-caja-zapatos.jpg" class="img-responsive" alt="Imagen del residuo">
+	            	<img id="img_prod" src="" class="img-responsive" alt="Imagen del residuo">
 
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, aperiam voluptate recusandae pariatur perferendis laborum. Ipsum, deserunt necessitatibus recusandae eos porro expedita facere sit! Illo rerum explicabo impedit consectetur similique.</p>
+					<p id="description_img">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, aperiam voluptate recusandae pariatur perferendis laborum. Ipsum, deserunt necessitatibus recusandae eos porro expedita facere sit! Illo rerum explicabo impedit consectetur similique.</p>
 
 	            </div>
 	        </div>
 	    </div><!-- container -->
-
-		<footer class="container">
-	        <a href="http://reciclario.com.ar/" id="logo-hombre" title="Reciclario">Reciclario</a>
-	    </footer>
-	    
-    </div>
+    </div><!-- residuo_description -->
 
    	<div id="nuevo_residuo" style="display:none">
-
-	    <header class="container">
-	        <a href="http://reciclario.com.ar/" id="logo" title="Reciclario">Reciclario</a>
-	    </header>
-
-	    <div class="container">
+		<div class="container">
 	        <div class="row">
 	            <form role="form" class="col-md-8">
 				  
@@ -105,13 +83,12 @@
 				  <button type="submit" class="btn btn-success">Cargar</button>
 				</form>
 	        </div>
-	    </div><!-- container -->
+	    </div><!-- container -->	    
+    </div><!-- nuevo_residuo -->
 
-		<footer class="container">
-	        <a href="http://reciclario.com.ar/" id="logo-hombre" title="Reciclario">Reciclario</a>
-	    </footer>
-	    
-    </div>
+    <footer class="container">
+        <a href="http://reciclario.com.ar/" id="logo-hombre" title="Reciclario">Reciclario</a>
+    </footer>
 
     <!-- SCRIPTS -->
     <script src="lib/bootstrap/js/jquery-1.10.2.js"></script>

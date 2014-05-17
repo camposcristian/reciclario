@@ -1,4 +1,5 @@
 $(document).on("ready", function () {
+    
     var residuos = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -10,6 +11,7 @@ $(document).on("ready", function () {
             }
         }
     });
+
     residuos.initialize();
     $('#residuo').typeahead(null, {
         name: 'residuos',
