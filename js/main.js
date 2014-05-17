@@ -1,5 +1,6 @@
 $(document).on("ready", function () {
     
+    //http://api.reciclario.com.ar/residuos
     $.get("/fakes/residuos.json").success(function (residuos) {
         $( "#residuo" ).autocomplete({
             minLength: 2,
@@ -9,9 +10,9 @@ $(document).on("ready", function () {
                 return false;
             },
             select: function( event, ui ) {
-                $( "#residuo" ).val( ui.item.label );
+                $("#residuo").val( ui.item.label );
                 $("#residuo-id").val(ui.item.post_type);
-                $( "#residuos-description" ).html( ui.item.post_type );
+                $("#residuos-description").html( ui.item.post_type );
                 return false;
             }
         })
@@ -21,4 +22,23 @@ $(document).on("ready", function () {
               .appendTo( ul );
         };
     });
+
+
+    $("#form_residuos").submit(function( event ) {
+      event.preventDefault();
+
+      var residuo = $("#residuo").val();
+      var residuo_id = $("#residuo-id").val();
+
+      console.log("nombre: ", residuo, "id", residuo_id);
+
+      if (residuo_id == "reciclable") {
+
+        $("#main").toggle("fade");
+        $("#residuo_description").toggle("fade");
+
+      };
+
+    });
+
 });
