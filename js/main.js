@@ -1,26 +1,20 @@
 $(document).on("ready", function () {
-    
-    //http://api.reciclario.com.ar/residuos
-    $.get("/fakes/residuos.json").success(function (residuos) {
-        $( "#residuo" ).autocomplete({
-            minLength: 2,
-            source: residuos,
-            focus: function( event, ui ) {
-                $("#residuo").val(ui.item.label);
-                return false;
-            },
-            select: function( event, ui ) {
-                $("#residuo").val( ui.item.label );
-                $("#residuo-id").val(ui.item.post_type);
-                $("#residuos-description").html( ui.item.post_type );
-                return false;
+    var residuos = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        limit: 5,
+        prefetch: {
+            url: 'fakes/residuos.json',
+            filter: function (list) {
+                return $.map(list, function (residuo) { return { name: residuo.label, id: residuo.ID, reciclable: post_type }; });
             }
-        })
-        .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-            return $( "<li>" )
-              .append("<a>" + item.label + " <span>" + item.post_type + "</span></a>")
-              .appendTo( ul );
-        };
+        }
+    });
+    residuos.initialize();
+    $('#residuo').typeahead(null, {
+        name: 'residuos',
+        displayKey: 'name',
+        source: residuos.ttAdapter()
     });
 
     $("#form_residuos").submit(function( event ) {
