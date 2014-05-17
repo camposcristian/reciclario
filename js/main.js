@@ -25,15 +25,22 @@ $(document).on("ready", function () {
       var residuo = $("#residuo").val();
       var residuo_id = $("#residuo-id").val();
 
-      console.log("nombre: ", residuo, "id", residuo_id);
-
-      if (residuo_id == "reciclable") {
-
-        $("#main").toggle("fade");
-        $("#residuo_description").toggle("fade");
-
-      }
 
     });
+
+    //conexion con API de reciclario.com.ar para buscar la info de un material por ID
+      var id = 606;
+      $.ajax({
+          url: "http://reciclario.com.ar/?p="+id+"&json=1",
+          jsonp: "callback",
+          dataType: "jsonp",
+          success: function( response ) {
+              console.log( response.post ); // server response
+              $("#nombre_prod").text(response.post.title);
+              $("#img_prod").attr('src', response.post.attachments[0]['images']['medium']['url']);
+              $("#description").html(response.post.excerpt);
+              $("#description").append('<a href="'+response.post.url+'">Ver más »</a>');
+          }
+      });
 
 });
