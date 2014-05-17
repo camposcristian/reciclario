@@ -1,5 +1,4 @@
 $(document).on("ready", function () {
-    id = 0;
     var residuos = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -23,14 +22,12 @@ $(document).on("ready", function () {
     $("#form_residuos").submit(function (event) {
         event.preventDefault();
         if (id) {
-            $("#loader").fadeIn('slow');
             $.ajax({
                 url: "http://reciclario.com.ar/?p=" + id + "&json=1",
                 jsonp: "callback",
                 dataType: "jsonp",
                 success: function (response) {
                     $("#main").hide();
-                    $("#loader").fadeOut('slow');
                     $("#residuo_description").fadeIn("slow");
                     console.log(response.post); // server response
                     $("#nombre_prod").text(response.post.title);
@@ -38,7 +35,6 @@ $(document).on("ready", function () {
                     $("#description").html(response.post.excerpt);
                     $("#description").append('<a href="' + response.post.url + '">Ver mas >></a>');
                     if (response.post.type == "compostable" || response.post.type == "reciclable") {
-                        $("#reciclable").fadeIn("slow");
                         $("#camapana").fadeIn('slow');
                         //$.get("/fakes/campanas.json").success(function (campanas) {
                             var campanas =   [{
@@ -103,9 +99,6 @@ $(document).on("ready", function () {
                                 document.getElementById('listado').innerHTML = html;
                             }
                         //});
-                    }
-                    else {
-                        $("#noReciclable").fadeIn("slow");
                     }
                 }
             });
