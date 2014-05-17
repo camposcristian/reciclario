@@ -8,20 +8,8 @@
 .ui-autocomplete li a:hover { text-decoration: none; }
 .ui-autocomplete li a span { font-weight: bold; }
 
-/*.typeahead,
-.tt-query,
-.tt-hint {
-  width: 396px;
-  height: 30px;
-  padding: 8px 12px;
-  font-size: 24px;
-  line-height: 30px;
-  border: 2px solid #ccc;
-  -webkit-border-radius: 8px;
-     -moz-border-radius: 8px;
-          border-radius: 8px;
-  outline: none;
-}*/
+#loader{ position: absolute; width: 100%; height: 100%; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); text-align: center; z-index: 10; display: none; }
+#loader img{ margin: 60% auto }
 
 .typeahead {
   background-color: #fff;
