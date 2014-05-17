@@ -1,4 +1,5 @@
 $(document).on("ready", function () {
+    
     var residuos = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -10,13 +11,13 @@ $(document).on("ready", function () {
             }
         }
     });
+
     residuos.initialize();
     $('#residuo').typeahead(null, {
         name: 'residuos',
         displayKey: 'name',
         source: residuos.ttAdapter()
     });
-
 
     $("#form_residuos").submit(function( event ) {
       event.preventDefault();
@@ -31,7 +32,7 @@ $(document).on("ready", function () {
         $("#main").toggle("fade");
         $("#residuo_description").toggle("fade");
 
-      };
+      }
 
     });
 
