@@ -1,4 +1,5 @@
 $(document).on("ready", function () {
+    
     var residuos = new Bloodhound({
         datumTokenizer: function (d) {
             return d;
@@ -12,6 +13,7 @@ $(document).on("ready", function () {
             }
         }
     });
+
     residuos.initialize();
     $('#residuo').typeahead(null, {
         name: 'residuos',
@@ -26,7 +28,6 @@ $(document).on("ready", function () {
         });
     });
 
-
     $("#form_residuos").submit(function( event ) {
       event.preventDefault();
 
@@ -40,7 +41,7 @@ $(document).on("ready", function () {
         $("#main").toggle("fade");
         $("#residuo_description").toggle("fade");
 
-      };
+      }
 
     });
 
