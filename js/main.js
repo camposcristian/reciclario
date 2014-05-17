@@ -23,7 +23,6 @@ $(document).on("ready", function () {
         };
     });
 
-
     $("#form_residuos").submit(function( event ) {
       event.preventDefault();
 
@@ -37,7 +36,7 @@ $(document).on("ready", function () {
         $("#main").toggle("fade");
         $("#residuo_description").toggle("fade");
 
-      };
+      }
 
     });
 
