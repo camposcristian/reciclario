@@ -1,4 +1,5 @@
 $(document).on("ready", function () {
+    id = 0;
     var residuos = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -35,6 +36,7 @@ $(document).on("ready", function () {
                     $("#description").html(response.post.excerpt);
                     $("#description").append('<a href="' + response.post.url + '">Ver mas >></a>');
                     if (response.post.type == "compostable" || response.post.type == "reciclable") {
+                        $("#reciclable").fadeIn("slow");
                         $("#camapana").fadeIn('slow');
                         //$.get("/fakes/campanas.json").success(function (campanas) {
                             var campanas =   [{
@@ -99,6 +101,9 @@ $(document).on("ready", function () {
                                 document.getElementById('listado').innerHTML = html;
                             }
                         //});
+                    }
+                    else {
+                        $("#noReciclable").fadeIn("slow");
                     }
                 }
             });

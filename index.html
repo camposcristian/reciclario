@@ -1,133 +1,162 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<title>Reciclario App</title>
-	<!-- STYLES -->
-	<link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
-	<link href="css/style.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Reciclario App</title>
+    <!-- STYLES -->
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
 
-	<header class="container">
-		<span id="logo" title="Reciclario">Reciclario</span>
-	</header>
+    <header class="container">
+        <span id="logo" title="Reciclario">Reciclario</span>
+    </header>
 
-	<div id="main" class="">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<form role="form"  id="form_residuos">
-						<div class="form-group">
-							<label for="residuo" style="display:block">Es Reciclable?</label>
-							<input type="text" class="typeahead form-control" id="residuo" placeholder="Nombre del Residuo" data-provide="typeahead" style="width: 100% !important" />
-						</div>
-						<div class="form-group">
-							<button type="submit" class="btn btn-block btn-success">Buscar</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<!-- container -->
-	</div>
+    <div id="main" class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <form role="form" id="form_residuos">
+                        <div class="form-group">
+                            <label for="residuo" style="display:block">¿Es Reciclable?</label>
+                            <input type="text" class="typeahead form-control" id="residuo" placeholder="Nombre del Residuo" data-provide="typeahead" style="width: 100% !important" />
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block btn-success">Buscar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- container -->
+    </div>
 
-	<div id="residuo_description" style="display:none">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<h2 id="nombre_prod"></h2>
+    <div id="residuo_description" style="display:none">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="reciclable" style="display:none;">
+                        <div class="alert alert-success">
+                            <h2 class="text-center">El producto es reciclable!</h2>
+                        </div>
+                        <h2 id="nombre_prod"></h2>
 
-					<img id="img_prod" src="" class="img-responsive" alt="Imagen del residuo">
+                        <img id="img_prod" src="" class="img-responsive" alt="Imagen del residuo">
 
-					<p id="description"></p>
+                        <p id="description"></p>
 
-					<h2>¿Qué hacer?</h2>
-                    <p>Llevalo a a la campana más cercana!</p>
-                    <div class="listado" id="listado"><p class="empty-data"><i class="icon-thumbs-down-alt"></i>No hay ningun acceso WiFi cerca</p></div>
-				</div>
-			</div>
-		</div>
-		<!-- container -->
-	</div>
+                        <h2>¿Qué hacer?</h2>
+                        <p>Llevalo a a la campana más cercana!</p>
+                        <div class="listado" id="listado">
+                            <p class="empty-data">
+                                <i class="icon-thumbs-down-alt"></i>
+                            </p>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td><a href="#">Avenida Pueyrredón 318</a></td>
+                                    <td><a href="#" class="btn btn-sm btn-info">Ver Mapa</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#">Avenida Pueyrredón 350</a></td>
+                                    <td><a href="#" class="btn btn-sm btn-info">Ver Mapa</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#">Avenida Pueyrredón 362</a></td>
+                                    <td><a href="#" class="btn btn-sm btn-info">Ver Mapa</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="noReciclable" style="display:none;">
+                        <div class="alert alert-danger">
+                            <h2 class="text-center">El producto no es reciclable</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- container -->
+        </div>
 
-	<div id="nuevo_residuo" style="display:none">
-		<div class="container">
-			<div class="row">
-				<form method="post" novalidate enctype="multipart/form-data"  class="col-sm-12" action="https://www.formstack.com/forms/index.php" class="" id="fsForm1748728">
+        <div id="nuevo_residuo" style="display:none">
+            <div class="container">
+                <div class="row">
+                    <form method="post" novalidate enctype="multipart/form-data" class="col-sm-12" action="https://www.formstack.com/forms/index.php" class="" id="fsForm1748728">
 
-					<input type="hidden" name="form" value="1748728" />
-					<input type="hidden" name="viewkey" value="dei79l8RZi" />
-					<input type="hidden" name="hidden_fields" id="hidden_fields1748728" value="" />
-					<input type="hidden" name="_submit" value="1" />
-					<input type="hidden" name="incomplete" id="incomplete1748728" value="" />
-					<input type="hidden" name="style_version" value="3" />
-					<div class="alert alert-danger" role="alert" id="requiredFieldsError" style="display:none;">Please fill in a valid value for all required fields</div>
-					<div class="alert alert-danger" role="alert" id="invalidFormatError" style="display:none;">Please ensure all values are in a proper format.</div>
-					<div class="alert alert-danger" role="alert" id="resumeConfirm" style="display:none;">Are you sure you want to leave this form and resume later?</div>
-					<div class="alert alert-danger" role="alert" id="fileTypeAlert" style="display:none;">
-						You must upload one of the following file types for the selected field:
-					</div>
-					<div class="alert alert-danger" role="alert" id="embedError" style="display:none;">
-						There was an error displaying the form. Please copy and paste the embed code again.
-					</div>
+                        <input type="hidden" name="form" value="1748728" />
+                        <input type="hidden" name="viewkey" value="dei79l8RZi" />
+                        <input type="hidden" name="hidden_fields" id="hidden_fields1748728" value="" />
+                        <input type="hidden" name="_submit" value="1" />
+                        <input type="hidden" name="incomplete" id="incomplete1748728" value="" />
+                        <input type="hidden" name="style_version" value="3" />
+                        <div class="alert alert-danger" role="alert" id="requiredFieldsError" style="display:none;">Please fill in a valid value for all required fields</div>
+                        <div class="alert alert-danger" role="alert" id="invalidFormatError" style="display:none;">Please ensure all values are in a proper format.</div>
+                        <div class="alert alert-danger" role="alert" id="resumeConfirm" style="display:none;">Are you sure you want to leave this form and resume later?</div>
+                        <div class="alert alert-danger" role="alert" id="fileTypeAlert" style="display:none;">
+                            You must upload one of the following file types for the selected field:
+                        </div>
+                        <div class="alert alert-danger" role="alert" id="embedError" style="display:none;">
+                            There was an error displaying the form. Please copy and paste the embed code again.
+                        </div>
 
-					<div class="form-group">
-						<label for="nombre">Tu nombre?</label>
-						<input type="text" id="field25624247" name="field25624247" class="form-control"/>
-					</div>
+                        <div class="form-group">
+                            <label for="nombre">Tu nombre?</label>
+                            <input type="text" id="field25624247" name="field25624247" class="form-control" />
+                        </div>
 
-					<div class="form-group">
-						<label for="nombre">Tu E-Mail</label>
-						<input type="text" id="field25624248" name="field25624248" class="form-control"/>
-					</div>
+                        <div class="form-group">
+                            <label for="nombre">Tu E-Mail</label>
+                            <input type="text" id="field25624248" name="field25624248" class="form-control" />
+                        </div>
 
-					<div class="form-group">
-						<label for="nombre">¿Qué es?</label>
-						<input type="text" class="form-control"  id="field25624186" name="field25624186"  placeholder=""></div>
+                        <div class="form-group">
+                            <label for="nombre">¿Qué es?</label>
+                            <input type="text" class="form-control" id="field25624186" name="field25624186" placeholder="">
+                        </div>
 
-					<div class="form-group">
-						<label for="material">¿De qué material está hecho?</label>
-						<input type="text" class="form-control" id="field25624187" name="field25624187" placeholder=""></div>
+                        <div class="form-group">
+                            <label for="material">¿De qué material está hecho?</label>
+                            <input type="text" class="form-control" id="field25624187" name="field25624187" placeholder="">
+                        </div>
 
-					<div class="form-group">
-						<label for="foto">Sacale una foto para poder conocerlo mejor</label>
-						<input type="file" id="field25624189" name="field25624189"  class="fsField fsUpload uploadTypes-jpg,jpeg,gif,png,bmp,tif,psd,pdf,doc,docx,xls,xlsx,txt,mp3,mp4,aac,wav,au,wmv,avi,mpg,mpeg,zip,gz,rar,z,tgz,tar,sitx "   />
-					</div>
+                        <div class="form-group">
+                            <label for="foto">Sacale una foto para poder conocerlo mejor</label>
+                            <input type="file" id="field25624189" name="field25624189" class="fsField fsUpload uploadTypes-jpg,jpeg,gif,png,bmp,tif,psd,pdf,doc,docx,xls,xlsx,txt,mp3,mp4,aac,wav,au,wmv,avi,mpg,mpeg,zip,gz,rar,z,tgz,tar,sitx " />
+                        </div>
 
-					<div class="form-group">
-						<label for="comentario">Algún comentario?</label>
-						<textarea id="field25624191" name="field25624191" rows="2" class="form-control"></textarea>
-					</div>
+                        <div class="form-group">
+                            <label for="comentario">Algún comentario?</label>
+                            <textarea id="field25624191" name="field25624191" rows="2" class="form-control"></textarea>
+                        </div>
 
-					<div class="form-group">
-						<label for="tags">Tags</label>
-						<input type="text" id="field25624210" name="field25624210" class="form-control" />
-					</div>
+                        <div class="form-group">
+                            <label for="tags">Tags</label>
+                            <input type="text" id="field25624210" name="field25624210" class="form-control" />
+                        </div>
 
-					<button type="submit" class="btn btn-success">Cargar</button>
-				</form>
-			</div>
-		</div>
-		<!-- container -->
-	</div>
-	<!-- nuevo_residuo -->
+                        <button type="submit" class="btn btn-success">Cargar</button>
+                    </form>
+                </div>
+            </div>
+            <!-- container -->
+        </div>
+        <!-- nuevo_residuo -->
 
-	<footer class="container">
-		<span id="logo-hombre" title="Reciclario">Reciclario</span>
-	</footer>
-	
-	<div id="loader"><img src="images/loader.gif"></div>
+        <footer class="container">
+            <span id="logo-hombre" title="Reciclario">Reciclario</span>
+        </footer>
 
-	<!-- SCRIPTS -->
-	<script src="lib/bootstrap/js/jquery-1.10.2.js"></script>
-	<script src="lib/bootstrap/js/bootstrap.js"></script>
-	<script src="lib/jquery.ui/jquery.ui.js"></script>
-	<script src="js/main.js"></script>
+        <div id="loader"><img src="images/loader.gif"></div>
 
-	<!-- Formstack validator -->
+        <!-- SCRIPTS -->
+        <script src="lib/bootstrap/js/jquery-1.10.2.js"></script>
+        <script src="lib/bootstrap/js/bootstrap.js"></script>
+        <script src="lib/jquery.ui/jquery.ui.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Formstack validator -->
 
 </body>
 </html>
