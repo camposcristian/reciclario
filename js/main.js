@@ -18,6 +18,7 @@ $(document).on("ready", function () {
     }).bind('typeahead:selected', function (obj, selected, name) {
         id = selected.id;
     });
+    $('.twitter-typeahead').css("display", "block");
     $("#form_residuos").submit(function (event) {
         event.preventDefault();
         if (id) {
@@ -33,26 +34,28 @@ $(document).on("ready", function () {
                     $("#img_prod").attr('src', response.post.attachments[0]['images']['medium']['url']);
                     $("#description").html(response.post.excerpt);
                     $("#description").append('<a href="' + response.post.url + '">Ver mas >></a>');
-                    if (response.post_type == "compostable" || response.post_type == "reciclable") {
-
-                        navigator.geolocation.getCurrentPosition(gps);
-                        var subarray = new Array();
-                        var suLat = '';
-                        var suLon = '';
-                        function gps(location) {
-
-                            if (typeof (Number.prototype.toRad) === "undefined") {
-                                Number.prototype.toRad = function () {
-                                    return this * Math.PI / 180;
+                    if (response.post.type == "compostable" || response.post.type == "reciclable") {
+                        $("#camapana").fadeIn('slow');
+                        $.get("/fakes/campanas.json").success(function (campanas) {
+                            var subarray = new Array();
+                            var suLat = '';
+                            var suLon = '';
+                            function gps(location) {
+                                if (typeof (Number.prototype.toRad) === "undefined") {
+                                    Number.prototype.toRad = function () {
+                                        return this * Math.PI / 180;
+                                    }
                                 }
                             }
+
+                            navigator.geolocation.getCurrentPosition(gps);
 
                             var html = '';
                             suLat = location.coords.latitude;
                             suLon = location.coords.longitude;
 
-                            for (var i = 0; i < hotspots.length; i++) {
-                                var object = hotspots[i];
+                            for (var i = 0; i < campanas.length; i++) {
+                                var object = campanas[i];
                                 var sube = subarray[i];
 
                                 var lat1 = location.coords.latitude;
@@ -71,30 +74,28 @@ $(document).on("ready", function () {
                                 var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
                                 var d = R * c;
                                 var dist = parseFloat(d);
-                                if (d < 1.5) {
-                                    subarray[i] = [dist, object["nombre"], object["domicilio"], parseFloat(object["lat"]), parseFloat(object["long"])];
-                                }
-
-                                subarray.sort(function (a, b) {
-                                    if (a[0] > b[0])
-                                        return 1;
-                                    if (a[0] < b[0])
-                                        return -1;
-                                    // a must be equal to b
-                                    return 0;
-                                });
-                                for (var i = 0; i < subarray.length; i++) {
-                                    var object = subarray[i];
-                                    var posicion = object[0].toString();
-                                    html += '<div class="listado-item"><div class="distancia">' + '<a href="maps://maps.google.com/?daddr=' + suLat + ',' + suLon + '&saddr=' + object[3] + ',' + object[4] + '&dirflg=w">' + posicion.substr(0, posicion.indexOf('.') + 2) + 'km' + '</a>' + '</div>' + '<h2>' + object[1] + '</h2>' + object[2] + '</div>';
-                                    document.getElementById('listado').innerHTML = html;
+                                if (d < 15) {
+                                    subarray[i] = [dist, object["calle"], object["altura"], parseFloat(object["lat"]), parseFloat(object["long"])];
                                 }
                             }
-                        }
+                            subarray.sort(function (a, b) {
+                                if (a[0] > b[0])
+                                    return 1;
+                                if (a[0] < b[0])
+                                    return -1;
+                                // a must be equal to b
+                                return 0;
+                            });
+                            for (var i = 0; i < subarray.length; i++) {
+                                var object = subarray[i];
+                                var posicion = object[0].toString();
+                                html += '<div class="listado-item"><div class="distancia">' + '<a href="maps://maps.google.com/?daddr=' + suLat + ',' + suLon + '&saddr=' + object[3] + ',' + object[4] + '&dirflg=w">' + posicion.substr(0, posicion.indexOf('.') + 2) + 'km' + '</a>' + '</div>' + '<h2>' + object[1] + '</h2>' + 'Nro' + object[2] + '</div>';
+                                document.getElementById('listado').innerHTML = html;
+                            }
+                        });
                     }
                 }
             });
-
         }
         else {
             $("#main").hide();
