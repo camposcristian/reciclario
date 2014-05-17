@@ -36,7 +36,13 @@ $(document).on("ready", function () {
                     $("#description").append('<a href="' + response.post.url + '">Ver mas >></a>');
                     if (response.post.type == "compostable" || response.post.type == "reciclable") {
                         $("#camapana").fadeIn('slow');
-                        $.get("/fakes/campanas.json").success(function (campanas) {
+                        //$.get("/fakes/campanas.json").success(function (campanas) {
+                            var campanas =   [{
+                                "calle":"CORRIENTES AV.",
+                                "altura":"5060",
+                                "lat":-34.600483,
+                                "long":-58.437212
+                            }]
                             var subarray = new Array();
                             var suLat = '';
                             var suLon = '';
@@ -92,7 +98,7 @@ $(document).on("ready", function () {
                                 html += '<div class="listado-item"><div class="distancia">' + '<a href="maps://maps.google.com/?daddr=' + suLat + ',' + suLon + '&saddr=' + object[3] + ',' + object[4] + '&dirflg=w">' + posicion.substr(0, posicion.indexOf('.') + 2) + 'km' + '</a>' + '</div>' + '<h2>' + object[1] + '</h2>' + 'Nro' + object[2] + '</div>';
                                 document.getElementById('listado').innerHTML = html;
                             }
-                        });
+                        //});
                     }
                 }
             });
